@@ -1,0 +1,7 @@
+.idea/
+*.iml
+vendor/
+node_modules/
+dist/
+build/
+.bower/
