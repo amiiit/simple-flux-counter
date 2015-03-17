@@ -14,8 +14,7 @@ import React from 'react';
 import App from './components/App';
 import Counter from './components/Counter';
 import CounterStore from './stores/CounterStore'
-import ConfigStore from './stores/ConfigStoregst' +
-    ''
+import ConfigStore from './stores/ConfigStore'
 
 var path = decodeURI(window.location.pathname);
 

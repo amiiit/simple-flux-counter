@@ -6,7 +6,6 @@ import ConfigStore from '../../stores/ConfigStore'
 
 
 function getStateFromStore() {
-    console.log('getting state', ConfigStore.getCurrentConfig('pushNotificationsEnabled'));
     return {
         pushNotificationsEnabled: ConfigStore.getCurrentConfig('pushNotificationsEnabled')
     }
@@ -34,17 +33,14 @@ var Config = React.createClass({
     },
 
     render() {
-        console.log('render state', this.state);
-
         return (
             <div onClick={this.handleMyClick}>
-                <p>whatever: {this.state.pushNotificationsEnabled + ''}</p>
+                <p>Push notifications enabled: {this.state.pushNotificationsEnabled + ''}</p>
             </div>
         )
     },
 
     onChange() {
-        console.log('on change');
         this.setState(getStateFromStore())
     }
 });
