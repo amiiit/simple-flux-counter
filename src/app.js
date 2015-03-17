@@ -14,12 +14,15 @@ import React from 'react';
 import App from './components/App';
 import Counter from './components/Counter';
 import CounterStore from './stores/CounterStore'
+import ConfigStore from './stores/ConfigStoregst' +
+    ''
 
 var path = decodeURI(window.location.pathname);
 
 function run() {
     var component = React.createElement(App, {});
     CounterStore.initialize();
+    ConfigStore.initialize();
     React.render(component, document.body);
 }
 

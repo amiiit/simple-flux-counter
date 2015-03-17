@@ -3,7 +3,6 @@
 import React from 'react';
 import AppActions from '../../actions/AppActions'
 import CounterStore from '../../stores/CounterStore'
-import {RaisedButton} from 'material-ui';
 
 
 function getStateFromStore() {
@@ -35,7 +34,7 @@ var Counter = React.createClass({
 
     render() {
         return (
-            <RaisedButton onClick={this.handleClick} label={"Count: "+ this.state.count}></RaisedButton>
+            <button onClick={this.handleClick} label={"Count: "+ this.state.count}></button>
         )
     },
 

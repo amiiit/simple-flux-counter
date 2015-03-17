@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Counter from '../Counter';
+import Config from '../Config';
 
 var Application = React.createClass({
 
@@ -9,6 +10,7 @@ var Application = React.createClass({
             return (
                 <div>
                     <p>Hello React Counter</p>
+                    <Config></Config>
                     <Counter></Counter>
                 </div>
             )

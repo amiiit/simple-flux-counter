@@ -9,6 +9,15 @@ class AppActions {
             actionType: ActionType.COUNTER_INCREMENT
         })
     }
+
+    static setPushNotificationEnabled(stateToSet) {
+        Dispatcher.handleViewAction({
+            actionType: ActionType.CONFIG_CHANGE,
+            config: {
+                pushNotificationsEnabled: stateToSet
+            }
+        })
+    }
 }
 
 export default AppActions;

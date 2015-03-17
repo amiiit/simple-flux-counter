@@ -1,11 +1,12 @@
 var browserify = require('browserify'),
     gulp = require('gulp'),
     source = require('vinyl-source-stream'),
-    babelify = require("babelify")
+    babelify = require("babelify"),
+    connect = require('gulp-connect')
     ;
 
 
-gulp.task('browserify', function() {
+gulp.task('browserify', function () {
     return browserify({debug: true})
         .add('./src/app.js')
         .transform(babelify)
@@ -13,5 +14,7 @@ gulp.task('browserify', function() {
         //Pass desired output filename to vinyl-source-stream
         .pipe(source('bundle.js'))
         // Start piping stream to tasks!
-        .pipe(gulp.dest('./build/'));
+        .pipe(gulp.dest('./build/'))
+        .pipe(connect.reload())
+        ;
 });
