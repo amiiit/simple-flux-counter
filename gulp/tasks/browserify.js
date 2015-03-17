@@ -6,7 +6,7 @@ var browserify = require('browserify'),
     ;
 
 
-gulp.task('browserify', function () {
+gulp.task('reactify', function () {
     return browserify({debug: true})
         .add('./src/app.js')
         .transform(babelify)
@@ -17,4 +17,9 @@ gulp.task('browserify', function () {
         .pipe(gulp.dest('./build/'))
         .pipe(connect.reload())
         ;
+});
+
+gulp.task('workerify', function () {
+    return gulp.src('./src/workers/service-worker.js')
+        .pipe(gulp.dest('./build'));
 });

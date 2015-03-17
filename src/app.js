@@ -15,6 +15,7 @@ import App from './components/App';
 import Counter from './components/Counter';
 import CounterStore from './stores/CounterStore'
 import ConfigStore from './stores/ConfigStore'
+import Workers from './workers/Workers'
 
 var path = decodeURI(window.location.pathname);
 
@@ -22,6 +23,8 @@ function run() {
     var component = React.createElement(App, {});
     CounterStore.initialize();
     ConfigStore.initialize();
+    Workers.initialize();
+
     React.render(component, document.body);
 }
 

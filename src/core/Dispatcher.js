@@ -8,5 +8,13 @@ class Dispatcher extends FluxDispatcher {
             action: action
         });
     }
+
+    handleBackendAction(action) {
+        this.dispatch({
+            source: 'BACKEND_ACTION',
+            action: action
+        });
+    }
+
 }
 module.exports = new Dispatcher();

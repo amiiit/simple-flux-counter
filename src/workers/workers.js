@@ -1,27 +1,29 @@
+import ConfigStore from '../stores/ConfigStore'
+import BackendActions from '../actions/BackendActions'
+
 var isPushEnabled = false;
 
+export default
 class Workers {
 
-    static function init() {
-        window.addEventListener('load', function () {
-            var pushButton = document.querySelector('.js-push-button');
-            pushButton.addEventListener('click', function () {
-                if (isPushEnabled) {
-                    unsubscribe();
-                } else {
-                    subscribe();
-                }
-            });
+    static initialize() {
 
+        ConfigStore.addChangeListener(function () {
+            isPushEnabled = ConfigStore.getCurrentConfig('pushNotificationsEnabled');
+            console.log('isPushEnabled', isPushEnabled);
+        });
+
+        window.addEventListener('load', function () {
             // Check that service workers are supported, if so, progressively
             // enhance and add push messaging support, otherwise continue without it.
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/service-worker.js')
-                    .then(initialiseState);
+                    .then(function (registration) {
+                        console.log('initialiseState here', registration.scope, registration);
+                    });
             } else {
                 console.warn('Service workers aren\'t supported in this browser.');
             }
         });
     }
-
 }
