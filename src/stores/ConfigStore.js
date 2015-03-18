@@ -9,7 +9,8 @@ import assign from 'object-assign';
 var counter = 0;
 var CHANGE_EVENT = 'change';
 var config = {
-    pushNotificationsEnabled: false
+    pushNotificationsEnabled: false,
+    pushNotificationsAllowed: false
 };
 
 var ConfigStore = assign({}, EventEmitter.prototype, {
