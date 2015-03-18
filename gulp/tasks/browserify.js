@@ -20,6 +20,7 @@ gulp.task('reactify', function () {
 });
 
 gulp.task('workerify', function () {
-    return gulp.src('./src/workers/service-worker.js')
+    return gulp.src(['./src/workers/service-worker.js','./src/manifest.json'])
         .pipe(gulp.dest('./build'));
 });
+

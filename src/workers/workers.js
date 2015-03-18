@@ -4,6 +4,24 @@ import BackendActions from '../actions/BackendActions'
 var isPushEnabled = false;
 
 
+function subscribe() {
+    navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
+        serviceWorkerRegistration.pushManager.subscribe()
+            .then(function(subscription) {
+                return sendSubscriptionToServer(subscription);
+            })
+            .catch(function(e) {
+                if (Notification.permission === 'denied') {
+                    console.warn('Permission for Notifications was denied');
+                    BackendActions.setPushNotificationAllowed(false);
+                } else {
+                    console.error('Unable to subscribe to push.', e);
+                    BackendActions.setPushNotificationEnabled(false);
+                }
+            });
+    });
+}
+
 function sendSubscriptionToServer(subscription) {
     console.log('please add subscription', subscription);
 }
@@ -68,6 +86,9 @@ class Workers {
         ConfigStore.addChangeListener(function () {
             isPushEnabled = ConfigStore.getCurrentConfig('pushNotificationsEnabled');
             console.log('isPushEnabled', isPushEnabled);
+            if (isPushEnabled){
+                subscribe();
+            }
         });
 
         window.addEventListener('load', function () {
