@@ -44,7 +44,9 @@ var Config = React.createClass({
     },
 
     onChange() {
-        this.setState(getStateFromStore())
+        var newState = getStateFromStore();
+        console.log('setting new state', newState);
+        this.setState(newState);
     }
 });
 

@@ -20,6 +20,7 @@ var ConfigStore = assign({}, EventEmitter.prototype, {
             var action = payload.action;
 
             if (action.actionType == ActionType.CONFIG_CHANGE) {
+                console.log('got config change', action.config);
                 assign(config, action.config);
                 ConfigStore.emitChange();
             }

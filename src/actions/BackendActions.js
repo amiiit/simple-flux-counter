@@ -8,7 +8,7 @@ export default class BackendActions {
         Dispatcher.handleBackendAction({
             actionType: ActionType.CONFIG_CHANGE,
             config: {
-                setPushNotificationEnabled: valueToSet
+                pushNotificationsEnabled: valueToSet
             }
         })
     }
@@ -17,7 +17,7 @@ export default class BackendActions {
         Dispatcher.handleBackendAction({
             actionType: ActionType.CONFIG_CHANGE,
             config: {
-                setPushNotificationAllowed: valueToSet
+                pushNotificationsAllowed: valueToSet
             }
         })
     }

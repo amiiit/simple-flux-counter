@@ -29,6 +29,8 @@ function initialiseState() {
         return;
     }
 
+    BackendActions.setPushNotificationAllowed(true);
+
     // We need the service worker registration to check for a subscription
     navigator.serviceWorker.ready.then(function (serviceWorkerRegistration) {
         // Do we already have a push message subscription?
